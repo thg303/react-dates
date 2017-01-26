@@ -31,6 +31,7 @@ const propTypes = {
   onDayMouseLeave: PropTypes.func,
   onMonthTransitionEnd: PropTypes.func,
   transformValue: PropTypes.string,
+  focusedDate: momentPropTypes.momentObj,
 
   // i18n
   monthFormat: PropTypes.string,
@@ -49,6 +50,7 @@ const defaultProps = {
   onDayMouseLeave() {},
   onMonthTransitionEnd() {},
   transformValue: 'none',
+  focusedDate: null,
 
   // i18n
   monthFormat: 'MMMM YYYY', // english locale
@@ -58,7 +60,7 @@ function getMonths(initialMonth, numberOfMonths) {
   let month = initialMonth.clone().subtract(1, 'month');
 
   const months = [];
-  for (let i = 0; i < numberOfMonths + 2; i++) {
+  for (let i = 0; i < numberOfMonths + 2; i += 1) {
     months.push(month);
     month = month.clone().add(1, 'month');
   }
@@ -78,8 +80,7 @@ export default class CalendarMonthGrid extends React.Component {
   }
 
   componentDidMount() {
-    this.container = ReactDOM.findDOMNode(this.containerRef);
-    this.container.addEventListener('transitionend', this.onTransitionEnd);
+    this.containerRef.addEventListener('transitionend', this.onTransitionEnd);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -124,7 +125,7 @@ export default class CalendarMonthGrid extends React.Component {
   }
 
   componentWillUnmount() {
-    this.container.removeEventListener('transitionend', this.onTransitionEnd);
+    this.containerRef.removeEventListener('transitionend', this.onTransitionEnd);
   }
 
   onTransitionEnd() {
@@ -145,6 +146,7 @@ export default class CalendarMonthGrid extends React.Component {
       onDayMouseLeave,
       onDayClick,
       onMonthTransitionEnd,
+      focusedDate,
     } = this.props;
 
 
@@ -157,6 +159,7 @@ export default class CalendarMonthGrid extends React.Component {
       'CalendarMonthGrid--animating': isAnimating,
     });
 
+    console.log(focusedDate)
     return (
       <div
         ref={(ref) => { this.containerRef = ref; }}
@@ -179,6 +182,7 @@ export default class CalendarMonthGrid extends React.Component {
               onDayMouseEnter={onDayMouseEnter}
               onDayMouseLeave={onDayMouseLeave}
               onDayClick={onDayClick}
+              focusedDate={isVisible && focusedDate}
             />
           );
         })}

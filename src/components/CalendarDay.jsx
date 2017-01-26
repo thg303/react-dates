@@ -5,6 +5,7 @@ import moment from 'moment';
 
 const propTypes = {
   day: momentPropTypes.momentObj,
+  isFocused: PropTypes.bool,
   onDayClick: PropTypes.func,
   onDayMouseEnter: PropTypes.func,
   onDayMouseLeave: PropTypes.func,
@@ -12,6 +13,7 @@ const propTypes = {
 
 const defaultProps = {
   day: moment(),
+  isFocused: false,
   onDayClick() {},
   onDayMouseEnter() {},
   onDayMouseLeave() {},
@@ -20,6 +22,13 @@ const defaultProps = {
 export default class CalendarDay extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
     return shallowCompare(this, nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    const { isFocused } = this.props;
+    if (isFocused) {
+      this.buttonRef.focus();
+    }
   }
 
   onDayClick(day, e) {
@@ -41,14 +50,17 @@ export default class CalendarDay extends React.Component {
     const { day } = this.props;
 
     return (
-      <div
+      <button
+        ref={(ref) => { this.buttonRef = ref; }}
+        type="button"
         className="CalendarDay"
+        aria-label={day.format('LL')}
         onMouseEnter={e => this.onDayMouseEnter(day, e)}
         onMouseLeave={e => this.onDayMouseLeave(day, e)}
         onClick={e => this.onDayClick(day, e)}
       >
         <span className="CalendarDay__day">{day.format('D')}</span>
-      </div>
+      </button>
     );
   }
 }

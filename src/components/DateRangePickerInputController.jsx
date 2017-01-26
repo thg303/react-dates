@@ -40,6 +40,7 @@ const propTypes = {
 
   onFocusChange: PropTypes.func,
   onDatesChange: PropTypes.func,
+  onArrowDown: PropTypes.func,
 
   customInputIcon: PropTypes.node,
   customArrowIcon: PropTypes.node,
@@ -76,6 +77,7 @@ const defaultProps = {
 
   onFocusChange() {},
   onDatesChange() {},
+  onArrowDown() {},
 
   customInputIcon: null,
   customArrowIcon: null,
@@ -206,6 +208,7 @@ export default class DateRangePickerInputWithHandlers extends React.Component {
       disabled,
       required,
       phrases,
+      onArrowDown,
     } = this.props;
 
     const startDateString = this.getDateString(startDate);
@@ -241,6 +244,7 @@ export default class DateRangePickerInputWithHandlers extends React.Component {
         showClearDates={showClearDates}
         onClearDates={this.clearDates}
         screenReaderMessage={screenReaderMessage}
+        onArrowDown={onArrowDown}
       />
     );
   }

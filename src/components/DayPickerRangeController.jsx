@@ -26,6 +26,7 @@ const propTypes = {
 
   focusedInput: FocusedInputShape,
   onFocusChange: PropTypes.func,
+  isFocused: PropTypes.bool,
 
   keepOpenOnDateSelect: PropTypes.bool,
   minimumNights: PropTypes.number,
@@ -38,7 +39,6 @@ const propTypes = {
   numberOfMonths: PropTypes.number,
   orientation: ScrollableOrientationShape,
   withPortal: PropTypes.bool,
-  hidden: PropTypes.bool,
   initialVisibleMonth: PropTypes.func,
 
   navPrev: PropTypes.node,
@@ -59,6 +59,7 @@ const defaultProps = {
 
   focusedInput: null,
   onFocusChange() {},
+  isFocused: false,
 
   keepOpenOnDateSelect: false,
   minimumNights: 1,
@@ -71,7 +72,6 @@ const defaultProps = {
   numberOfMonths: 1,
   orientation: HORIZONTAL_ORIENTATION,
   withPortal: false,
-  hidden: false,
 
   initialVisibleMonth: () => moment(),
 
@@ -106,7 +106,7 @@ export default class DayPickerRangeController extends React.Component {
   }
 
   onDayClick(day, e) {
-    const { keepOpenOnDateSelect, minimumNights } = this.props;
+    const { keepOpenOnDateSelect, minimumNights, onBlur } = this.props;
     if (e) e.preventDefault();
     if (this.isBlocked(day)) return;
 
@@ -137,6 +137,7 @@ export default class DayPickerRangeController extends React.Component {
     }
 
     this.props.onDatesChange({ startDate, endDate });
+    onBlur();
   }
 
   onDayMouseEnter(day) {
@@ -236,6 +237,7 @@ export default class DayPickerRangeController extends React.Component {
       enableOutsideDays,
       initialVisibleMonth,
       focusedInput,
+      isFocused,
     } = this.props;
 
     const modifiers = {
@@ -279,6 +281,7 @@ export default class DayPickerRangeController extends React.Component {
         onOutsideClick={onOutsideClick}
         navPrev={navPrev}
         navNext={navNext}
+        isFocused={isFocused}
       />
     );
   }

@@ -1,12 +1,21 @@
 .CalendarDay {
   position: relative;
-  display: table;
   height: 100%;
   width: 100%;
+  text-align: center;
+  background: none;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  cursor: pointer;
+  box-sizing: border-box;
 }
 
 .CalendarDay__day {
-  display: table-cell;
   vertical-align: middle;
 
   user-select: none;

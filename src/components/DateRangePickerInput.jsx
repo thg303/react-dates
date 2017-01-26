@@ -23,6 +23,8 @@ const propTypes = {
   onStartDateShiftTab: PropTypes.func,
   onEndDateTab: PropTypes.func,
   onClearDates: PropTypes.func,
+  onArrowDown: PropTypes.func,
+
 
   startDate: PropTypes.string,
   startDateValue: PropTypes.string,
@@ -58,6 +60,7 @@ const defaultProps = {
   onStartDateShiftTab() {},
   onEndDateTab() {},
   onClearDates() {},
+  onArrowDown() {},
 
   startDate: '',
   startDateValue: '',
@@ -115,6 +118,7 @@ export default class DateRangePickerInput extends React.Component {
       onStartDateChange,
       onStartDateFocus,
       onStartDateShiftTab,
+      onArrowDown,
       endDate,
       endDateValue,
       endDateId,
@@ -165,6 +169,7 @@ export default class DateRangePickerInput extends React.Component {
           onChange={onStartDateChange}
           onFocus={onStartDateFocus}
           onKeyDownShiftTab={onStartDateShiftTab}
+          onKeyDownArrowDown={onArrowDown}
         />
 
         <div className="DateRangePickerInput__arrow">
@@ -185,6 +190,7 @@ export default class DateRangePickerInput extends React.Component {
           onChange={onEndDateChange}
           onFocus={onEndDateFocus}
           onKeyDownTab={onEndDateTab}
+          onKeyDownArrowDown={onArrowDown}
         />
 
         {showClearDates &&
