@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import momentPropTypes from 'react-moment-proptypes';
 import shallowCompare from 'react-addons-shallow-compare';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
@@ -25,6 +26,7 @@ const PREV_TRANSITION = 'prev';
 const NEXT_TRANSITION = 'next';
 
 const propTypes = {
+  firstVisibleMonth: momentPropTypes.momentObj,
   enableOutsideDays: PropTypes.bool,
   numberOfMonths: PropTypes.number,
   modifiers: PropTypes.object,
@@ -50,6 +52,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  firstVisibleMonth: moment(),
   enableOutsideDays: false,
   numberOfMonths: 1,
   modifiers: {},
@@ -233,9 +236,7 @@ export default class DayPicker extends React.Component {
   }
 
   getMonthHeightByIndex(i) {
-    return getMonthHeight(
-      ReactDOM.findDOMNode(this.refs.transitionContainer).querySelectorAll('.CalendarMonth')[i],
-    );
+    return getMonthHeight(this.transitionContainer.querySelectorAll('.CalendarMonth')[i]);
   }
 
   multiplyScrollableMonths(e) {
@@ -264,13 +265,14 @@ export default class DayPicker extends React.Component {
   }
 
   updateStateAfterMonthTransition() {
-    const { currentMonth, monthTransition } = this.state;
+    const { firstVisibleMonth, onMonthChange } = this.props;
+    const { monthTransition } = this.state;
 
-    let newMonth = currentMonth;
+    let newMonth = firstVisibleMonth;
     if (monthTransition === PREV_TRANSITION) {
-      newMonth = currentMonth.clone().subtract(1, 'month');
+      newMonth = firstVisibleMonth.clone().subtract(1, 'month');
     } else if (monthTransition === NEXT_TRANSITION) {
-      newMonth = currentMonth.clone().add(1, 'month');
+      newMonth = firstVisibleMonth.clone().add(1, 'month');
     }
 
     // clear the previous transforms
@@ -280,17 +282,17 @@ export default class DayPicker extends React.Component {
     );
 
     this.setState({
-      currentMonth: newMonth,
       monthTransition: null,
       translationValue: 0,
     });
+
+    onMonthChange(newMonth);
   }
 
   adjustDayPickerHeight() {
-    const transitionContainer = ReactDOM.findDOMNode(this.refs.transitionContainer);
     const heights = [];
 
-    Array.prototype.forEach.call(transitionContainer.querySelectorAll('.CalendarMonth'), (el) => {
+    Array.prototype.forEach.call(this.transitionContainer.querySelectorAll('.CalendarMonth'), (el) => {
       if (el.getAttribute('data-visible') === 'true') {
         heights.push(getMonthHeight(el));
       }
@@ -298,9 +300,9 @@ export default class DayPicker extends React.Component {
 
     const newMonthHeight = Math.max(...heights) + MONTH_PADDING;
 
-    if (newMonthHeight !== calculateDimension(transitionContainer, 'height')) {
+    if (newMonthHeight !== calculateDimension(this.transitionContainer, 'height')) {
       this.monthHeight = newMonthHeight;
-      transitionContainer.style.height = `${newMonthHeight}px`;
+      this.transitionContainer.style.height = `${newMonthHeight}px`;
     }
   }
 
@@ -309,7 +311,7 @@ export default class DayPicker extends React.Component {
     const transformValue = `${transformType}(-${translationValue}px)`;
 
     applyTransformStyles(
-      ReactDOM.findDOMNode(this.refs.transitionContainer).querySelector('.CalendarMonth'),
+      this.transitionContainer.querySelector('.CalendarMonth'),
       transformValue,
       1,
     );
@@ -379,6 +381,7 @@ export default class DayPicker extends React.Component {
     } = this.state;
 
     const {
+      firstVisibleMonth,
       enableOutsideDays,
       numberOfMonths,
       orientation,
@@ -393,7 +396,7 @@ export default class DayPicker extends React.Component {
 
     const numOfWeekHeaders = this.isVertical() ? 1 : numberOfMonths;
     const weekHeaders = [];
-    for (let i = 0; i < numOfWeekHeaders; i++) {
+    for (let i = 0; i < numOfWeekHeaders; i += 1) {
       weekHeaders.push(this.renderWeekHeader(i));
     }
 
@@ -452,7 +455,7 @@ export default class DayPicker extends React.Component {
 
           <div
             className={transitionContainerClasses}
-            ref="transitionContainer"
+            ref={(ref) => { this.transitionContainer = ref; }}
             style={transitionContainerStyle}
           >
             <CalendarMonthGrid
@@ -460,7 +463,7 @@ export default class DayPicker extends React.Component {
               transformValue={transformValue}
               enableOutsideDays={enableOutsideDays}
               firstVisibleMonthIndex={firstVisibleMonthIndex}
-              initialMonth={currentMonth}
+              initialMonth={firstVisibleMonth}
               isAnimating={isCalendarMonthGridAnimating}
               modifiers={modifiers}
               orientation={orientation}

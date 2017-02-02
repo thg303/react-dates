@@ -159,7 +159,6 @@ export default class CalendarMonthGrid extends React.Component {
       'CalendarMonthGrid--animating': isAnimating,
     });
 
-    console.log(focusedDate)
     return (
       <div
         ref={(ref) => { this.containerRef = ref; }}
