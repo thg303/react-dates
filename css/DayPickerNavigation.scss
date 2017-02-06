@@ -23,6 +23,7 @@
 
   &:active {
     background: darken($react-dates-color-white, 5%);
+    outline: 0;
   }
 }
 

@@ -103,6 +103,8 @@ export default class DateRangePicker extends React.Component {
     const { focusedInput, onFocusChange } = this.props;
     if (!focusedInput) return;
 
+    this.onBlurDayPicker();
+
     onFocusChange(null);
   }
 

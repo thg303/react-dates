@@ -246,6 +246,7 @@ export default class DayPickerRangeController extends React.Component {
       initialVisibleMonth,
       focusedInput,
       isFocused,
+      startDate,
     } = this.props;
 
     const { firstVisibleMonth } = this.state;
@@ -294,6 +295,7 @@ export default class DayPickerRangeController extends React.Component {
         navPrev={navPrev}
         navNext={navNext}
         isFocused={isFocused}
+        startDate={startDate}
       />
     );
   }

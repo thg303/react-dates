@@ -69,20 +69,26 @@ export default function DayPickerNavigation(props) {
   return (
     <div className={navClassNames}>
       {!isVerticalScrollable &&
-        <span
+        <button
+          type="button"
           className={prevClassNames}
           onClick={onPrevMonthClick}
+          onMouseUp={e => {
+            e.currentTarget.blur();
+          }}
         >
           {navPrevIcon}
-        </span>
+        </button>
       }
 
-      <span
+      <button
+        type="button"
         className={nextClassNames}
         onClick={onNextMonthClick}
+        onMouseUp={e => e.currentTarget.blur()}
       >
         {navNextIcon}
-      </span>
+      </button>
     </div>
   );
 }

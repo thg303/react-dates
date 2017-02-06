@@ -47,7 +47,7 @@ export default class CalendarDay extends React.Component {
   }
 
   render() {
-    const { day } = this.props;
+    const { day, isFocused } = this.props;
 
     return (
       <button
@@ -57,7 +57,9 @@ export default class CalendarDay extends React.Component {
         aria-label={day.format('LL')}
         onMouseEnter={e => this.onDayMouseEnter(day, e)}
         onMouseLeave={e => this.onDayMouseLeave(day, e)}
+        onMouseUp={e => e.currentTarget.blur()}
         onClick={e => this.onDayClick(day, e)}
+        tabIndex={isFocused ? 0 : -1}
       >
         <span className="CalendarDay__day">{day.format('D')}</span>
       </button>
