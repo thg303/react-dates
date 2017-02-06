@@ -147,6 +147,7 @@ export default class CalendarMonthGrid extends React.Component {
       onDayClick,
       onMonthTransitionEnd,
       focusedDate,
+      calendarMonthWidth,
     } = this.props;
 
 
@@ -159,11 +160,15 @@ export default class CalendarMonthGrid extends React.Component {
       'CalendarMonthGrid--animating': isAnimating,
     });
 
+    const style = Object.assign({
+      width: (numberOfMonths + 1) * calendarMonthWidth,
+    }, getTransformStyles(transformValue));
+
     return (
       <div
         ref={(ref) => { this.containerRef = ref; }}
         className={className}
-        style={getTransformStyles(transformValue)}
+        style={style}
         onTransitionEnd={onMonthTransitionEnd}
       >
         {months.map((month, i) => {
@@ -181,7 +186,7 @@ export default class CalendarMonthGrid extends React.Component {
               onDayMouseEnter={onDayMouseEnter}
               onDayMouseLeave={onDayMouseLeave}
               onDayClick={onDayClick}
-              focusedDate={isVisible && focusedDate}
+              focusedDate={isVisible ? focusedDate : null}
             />
           );
         })}

@@ -160,7 +160,7 @@ export default class DayPickerRangeController extends React.Component {
 
   onMonthChange(month) {
     this.setState({
-      firstVisibleMonth: month,
+      firstVisibleMonth: month.clone(),
     });
   }
 
