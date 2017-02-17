@@ -26,7 +26,7 @@ Credits and Thanks goes to:
 
 ## Live Playground
 
-For examples of the datepicker in action, go to http://airbnb.io/react-dates.
+For examples of the jalaali datepicker in action, go to https://thg303.github.io/react-dates-jalaali/.
 
 OR
 
@@ -41,7 +41,7 @@ To run that demo on your own computer:
 Ensure packages are installed with correct version numbers by running:
   ```sh
   (
-    export PKG=react-dates;
+    export PKG=react-dates-jalaali;
     npm info "$PKG" peerDependencies --json | command sed 's/[\{\},]//g ; s/: /@/g; s/ *//g' | xargs npm install --save "$PKG"
   )
   ```
@@ -49,7 +49,7 @@ Ensure packages are installed with correct version numbers by running:
   Which produces and runs a command like:
 
   ```sh
-  npm install --save react-dates moment@>=#.## react@>=#.## react-dom@>=#.## react-addons-shallow-compare@>=#.##
+  npm install --save react-dates-jalaali moment@>=#.## react@>=#.## react-dom@>=#.## react-addons-shallow-compare@>=#.##
   ```
 
 #### Include component
