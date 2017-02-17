@@ -7,6 +7,7 @@
 [![Downloads][downloads-image]][downloads-url]
 
 [![npm badge][npm-badge-png]][package-url]
+[![react dates badge][react-dates-png]][react-dates-url]
 
 > An easily internationalizable, mobile-friendly datepicker library for the web. (with jalaali calendar support)
 >
@@ -542,15 +543,17 @@ $react-dates-color-primary-dark: $some-other-color-specific-to-my-project;
 ```
 
 [package-url]: https://npmjs.org/package/react-dates-jalaali
-[npm-version-svg]: http://versionbadg.es/airbnb/react-dates.svg
-[travis-svg]: https://travis-ci.org/airbnb/react-dates.svg
-[travis-url]: https://travis-ci.org/airbnb/react-dates
-[deps-svg]: https://david-dm.org/airbnb/react-dates.svg
-[deps-url]: https://david-dm.org/airbnb/react-dates
-[dev-deps-svg]: https://david-dm.org/airbnb/react-dates/dev-status.svg
-[dev-deps-url]: https://david-dm.org/airbnb/react-dates#info=devDependencies
-[npm-badge-png]: https://nodei.co/npm/react-dates.png?downloads=true&stars=true
-[license-image]: http://img.shields.io/npm/l/react-dates.svg
+[npm-version-svg]: http://versionbadg.es/thg303/react-dates-jalaali.svg
+[travis-svg]: https://travis-ci.org/thg303/react-dates-jalaali.svg
+[travis-url]: https://travis-ci.org/thg303/react-dates-jalaali
+[deps-svg]: https://david-dm.org/thg303/react-dates-jalaali.svg
+[deps-url]: https://david-dm.org/thg303/react-dates-jalaali
+[dev-deps-svg]: https://david-dm.org/thg303/react-dates-jalaali/dev-status.svg
+[dev-deps-url]: https://david-dm.org/thg303/react-dates-jalaali#info=devDependencies
+[npm-badge-png]: https://nodei.co/npm/react-dates-jalaali.png?mini=true
+[license-image]: https://img.shields.io/github/license/mashape/apistatus.svg
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/react-dates.svg
 [downloads-url]: http://npm-stat.com/charts.html?package=react-dates-jalaali
+[react-dates-png]: https://img.shields.io/badge/powered--by-react--dates-fe7d37.svg
+[react-dates-url]: https://www.npmjs.com/package/react-dates
