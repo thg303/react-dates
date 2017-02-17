@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import { addEventListener, removeEventListener } from 'consolidated-events';
@@ -65,10 +65,11 @@ const defaultProps = {
 
   // i18n
   displayFormat: () => moment.localeData().longDateFormat('L'),
-  monthFormat: 'MMMM YYYY',
+  monthFormat: 'jMMMM jYYYY',
+  inFarsi: true,
   phrases: {
-    closeDatePicker: 'Close',
-    clearDate: 'Clear Date',
+    closeDatePicker: 'بستن',
+    clearDate: 'پاک کردن',
   },
 };
 

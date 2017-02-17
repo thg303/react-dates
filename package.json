@@ -1,7 +1,7 @@
 {
-  "name": "react-dates",
-  "version": "7.0.1",
-  "description": "A responsive and accessible date range picker component built with React",
+  "name": "react-dates-jalaali",
+  "version": "0.0.0-development",
+  "description": "A responsive and accessible date range picker component built with React with support for Jalaali Calendar based on amazing 'react-dates' by airbnb",
   "main": "index.js",
   "scripts": {
     "build": "npm run clean && npm run build:js && npm run build:css && npm run build:svg",
@@ -9,6 +9,7 @@
     "build:css": "node-sass css/styles.scss lib/css/_datepicker.css",
     "build:svg": "webpack",
     "clean": "rimraf lib",
+    "commit": "git-cz",
     "cover": "npm run cover:clean && npm run cover:mocha && npm run cover:check",
     "cover:clean": "rimraf coverage",
     "cover:check": "babel-node ./node_modules/istanbul/lib/cli check-coverage",
@@ -16,9 +17,9 @@
     "lint": "eslint --ext .js,.jsx src test",
     "mocha": "mocha --compilers js:babel-register,jsx:babel-register --require airbnb-js-shims --recursive ./test/_helpers",
     "pretest": "npm run --silent lint",
-    "tests-only": "npm run mocha --silent test",
+    "tests-only": "$NODE_DEBUG_OPTION npm run mocha -R --silent test",
     "tests-karma": "karma start",
-    "test": "npm run tests-only && npm run tests-karma",
+    "test": "npm run tests-karma",
     "storybook": "start-storybook -p 9001 -s ./public",
     "tag": "git tag v$npm_package_version",
     "gh-pages:clean": "rimraf _gh-pages",
@@ -34,18 +35,19 @@
     "prepublish": "in-publish && safe-publish-latest && npm run build || not-in-publish",
     "postpublish": "npm run gh-pages",
     "check-changelog": "expr $(git status --porcelain 2>/dev/null| grep \"^\\s*M.*CHANGELOG.md\" | wc -l) >/dev/null || (echo 'Please edit CHANGELOG.md' && exit 1)",
-    "check-only-changelog-changed": "(expr $(git status --porcelain 2>/dev/null| grep -v \"CHANGELOG.md\" | wc -l) >/dev/null && echo 'Only CHANGELOG.md may have uncommitted changes' && exit 1) || exit 0"
+    "check-only-changelog-changed": "(expr $(git status --porcelain 2>/dev/null| grep -v \"CHANGELOG.md\" | wc -l) >/dev/null && echo 'Only CHANGELOG.md may have uncommitted changes' && exit 1) || exit 0",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/airbnb/react-dates.git"
+    "url": "https://github.com/thg303/react-dates-jalaali"
   },
-  "author": "Maja Wichrowska <maja.wichrowska@airbnb.com>",
+  "author": "Ali Ghanavatian <ghanavatian.ali@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/airbnb/react-dates/issues"
+    "url": "https://github.com/thg303/react-dates-jalaali/issues"
   },
-  "homepage": "https://github.com/airbnb/react-dates#readme",
+  "homepage": "https://github.com/thg303/react-dates-jalaali/react-dates-jalaali#readme",
   "devDependencies": {
     "@kadira/react-storybook-addon-info": "^3.3.0",
     "@kadira/storybook": "^2.35.3",
@@ -57,7 +59,9 @@
     "babel-preset-airbnb": "^2.2.0",
     "babel-register": "^6.22.0",
     "chai": "^3.5.0",
+    "commitizen": "^2.9.6",
     "coveralls": "^2.11.15",
+    "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.15.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -88,6 +92,7 @@
     "rimraf": "^2.5.4",
     "safe-publish-latest": "^1.1.1",
     "sass-loader": "^4.1.1",
+    "semantic-release": "^6.3.2",
     "sinon": "^1.17.7",
     "sinon-sandbox": "^1.0.2",
     "style-loader": "^0.13.1",
@@ -98,6 +103,7 @@
     "array-includes": "^3.0.2",
     "classnames": "^2.2.5",
     "consolidated-events": "^1.0.1",
+    "moment-jalaali": "^0.6.0",
     "react-moment-proptypes": "^1.2.1",
     "react-portal": "^3.0.0"
   },
@@ -106,5 +112,8 @@
     "react": ">=0.14",
     "react-dom": ">=0.14",
     "react-addons-shallow-compare": ">=0.14"
+  },
+  "czConfig": {
+    "path": "node_modules/cz-conventional-changelog"
   }
 }

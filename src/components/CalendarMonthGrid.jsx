@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import momentPropTypes from 'react-moment-proptypes';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 import cx from 'classnames';
 import { addEventListener, removeEventListener } from 'consolidated-events';
 

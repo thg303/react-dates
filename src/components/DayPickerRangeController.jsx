@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import momentPropTypes from 'react-moment-proptypes';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 
 import isTouchDevice from '../utils/isTouchDevice';
 

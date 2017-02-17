@@ -43,6 +43,7 @@ export default {
   // i18n
   displayFormat: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   monthFormat: PropTypes.string,
+  inFarsi: PropTypes.bool,
   phrases: PropTypes.shape({
     closeDatePicker: PropTypes.node,
   }),

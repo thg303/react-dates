@@ -1,6 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import DayPicker from '../src/components/DayPicker';
+import moment from 'moment-jalaali'
 
 import {
   VERTICAL_ORIENTATION,
@@ -33,6 +34,9 @@ const TestNextIcon = props => (
 storiesOf('DayPicker', module)
   .addWithInfo('default', () => (
     <DayPicker />
+  ))
+  .addWithInfo('Gregorian Datepicker', () => (
+    <DayPicker monthFormat="YYYY MMMM" inFarsi={false} />
   ))
   .addWithInfo('more than one month', () => (
     <DayPicker numberOfMonths={2} />

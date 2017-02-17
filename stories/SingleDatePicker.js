@@ -48,6 +48,9 @@ storiesOf('SingleDatePicker', module)
   .addWithInfo('default', () => (
     <SingleDatePickerWrapper />
   ))
+  .addWithInfo('Gregorian', () => (
+    <SingleDatePickerWrapper monthFormat="YYYY MMMM" inFarsi={false} />
+  ))
   .addWithInfo('single month', () => (
     <SingleDatePickerWrapper
       numberOfMonths={1}

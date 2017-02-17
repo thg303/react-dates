@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 import { storiesOf } from '@kadira/storybook';
 
 import { VERTICAL_ORIENTATION, ANCHOR_RIGHT } from '../constants';
@@ -119,6 +119,9 @@ class TestWrapper extends React.Component {
 storiesOf('DateRangePicker', module)
   .addWithInfo('default', () => (
     <DateRangePickerWrapper />
+  ))
+  .addWithInfo('Gregorian', () => (
+    <DateRangePickerWrapper monthFormat="YYYY MMMM" inFarsi={false} />
   ))
   .addWithInfo('hidden with display: none', () => (
     <TestWrapper />
@@ -287,4 +290,3 @@ storiesOf('DateRangePicker', module)
       screenReaderInputMessage='Here you could inform screen reader users of the date format, minimum nights, blocked out dates, etc'
     />
   ));
-

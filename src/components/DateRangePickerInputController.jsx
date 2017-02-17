@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 
 import momentPropTypes from 'react-moment-proptypes';
 

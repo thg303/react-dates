@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import shallowCompare from 'react-addons-shallow-compare';
 import ReactDOM from 'react-dom';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 import cx from 'classnames';
 
 import OutsideClickHandler from './OutsideClickHandler';
@@ -47,6 +47,7 @@ const propTypes = {
 
   // i18n
   monthFormat: PropTypes.string,
+  inFarsi: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -71,7 +72,8 @@ const defaultProps = {
 
   renderDay: null,
   // i18n
-  monthFormat: 'MMMM YYYY',
+  monthFormat: 'jMMMM jYYYY',
+  inFarsi: true,
 };
 
 function applyTransformStyles(el, transform, opacity = '') {
@@ -134,6 +136,7 @@ export default class DayPicker extends React.Component {
   constructor(props) {
     super(props);
 
+    if (props.inFarsi) { moment.loadPersian(); }
     this.hasSetInitialVisibleMonth = !props.hidden;
     this.state = {
       currentMonth: props.hidden ? moment() : props.initialVisibleMonth(),

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import shallowCompare from 'react-addons-shallow-compare';
-import moment from 'moment';
+import moment from 'moment-jalaali';
 import cx from 'classnames';
 import Portal from 'react-portal';
 import { addEventListener, removeEventListener } from 'consolidated-events';
@@ -67,10 +67,11 @@ const defaultProps = {
 
   // i18n
   displayFormat: () => moment.localeData().longDateFormat('L'),
-  monthFormat: 'MMMM YYYY',
+  monthFormat: 'jMMMM jYYYY',
+  inFarsi: true,
   phrases: {
-    closeDatePicker: 'Close',
-    clearDates: 'Clear Dates',
+    closeDatePicker: 'بستن',
+    clearDates: 'پاک کردن',
   },
 };
 

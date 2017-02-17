@@ -1,4 +1,4 @@
-# react-dates <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+# react-dates-jalaali <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 
 [![Build Status][travis-svg]][travis-url]
 [![dependency status][deps-svg]][deps-url]
@@ -8,7 +8,18 @@
 
 [![npm badge][npm-badge-png]][package-url]
 
-> An easily internationalizable, mobile-friendly datepicker library for the web.
+> An easily internationalizable, mobile-friendly datepicker library for the web. (with jalaali calendar support)
+>
+
+ - default language is "Farsi", to change it add `inFarsi={false}`
+   attribute to the component
+ - default calendar is "Jalaali", to change it to gregorian add
+   `monthFormat="YYYY MMMM"` to the component
+
+Credits and Thanks goes to:
+
+ - [react-dates](https://github.com/airbnb/react-dates) package by airbnb
+ - [moment-jalaali](https://github.com/jalaali/moment-jalaali) package by Behrang Noruzi Niya
 
 ![react-dates in action](https://raw.githubusercontent.com/airbnb/react-dates/master/react-dates-demo.gif)
 
@@ -42,15 +53,15 @@ Ensure packages are installed with correct version numbers by running:
 
 #### Include component
 ```js
-import { SingleDatePicker } from 'react-dates';
+import { SingleDatePicker } from 'react-dates-jalaali';
 ```
 
 #### Include CSS
 When you use Webpack with CSS loader:
 ```js
-import 'react-dates/lib/css/_datepicker.css';
+import 'react-dates-jalaali/lib/css/_datepicker.css';
 ```
-Otherwise create a CSS file with the contents of `require.resolve('react-dates/lib/css/_datepicker.css')` and include it in the html `<head>` section.
+Otherwise create a CSS file with the contents of `require.resolve('react-dates-jalaali/lib/css/_datepicker.css')` and include it in the html `<head>` section.
 
 #### Make some awesome datepickers
 ```jsx
@@ -66,6 +77,7 @@ Otherwise create a CSS file with the contents of `require.resolve('react-dates/l
 ## API
 
 We have a handful of different components and utilities available for all of your date picking needs!
+
 
 ### `DateRangePicker`
 This fully-controlled component is designed to allow a user to select both a start date and an end date. It is best suited for a selecting a relatively short date range some time in the next year.
@@ -529,7 +541,7 @@ $react-dates-color-primary-dark: $some-other-color-specific-to-my-project;
 @import '~react-dates/css/styles.scss';
 ```
 
-[package-url]: https://npmjs.org/package/react-dates
+[package-url]: https://npmjs.org/package/react-dates-jalaali
 [npm-version-svg]: http://versionbadg.es/airbnb/react-dates.svg
 [travis-svg]: https://travis-ci.org/airbnb/react-dates.svg
 [travis-url]: https://travis-ci.org/airbnb/react-dates
@@ -541,4 +553,4 @@ $react-dates-color-primary-dark: $some-other-color-specific-to-my-project;
 [license-image]: http://img.shields.io/npm/l/react-dates.svg
 [license-url]: LICENSE
 [downloads-image]: http://img.shields.io/npm/dm/react-dates.svg
-[downloads-url]: http://npm-stat.com/charts.html?package=react-dates
+[downloads-url]: http://npm-stat.com/charts.html?package=react-dates-jalaali
